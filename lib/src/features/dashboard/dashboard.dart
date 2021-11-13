@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_projects/src/features/about/about_screen.dart';
-import 'package:my_projects/src/features/dashboard/favourite_packages_part.dart';
-import 'package:my_projects/src/features/dashboard/projects_part.dart';
-import 'package:my_projects/src/widgets/not_responsive.dart';
-import 'package:my_projects/src/widgets/vertical_tabs.dart';
-import 'package:my_projects/src/widgets/cover_widget.dart';
+import 'package:portfolio/src/features/about/about_screen.dart';
+import 'package:portfolio/src/features/dashboard/favourite_packages_part.dart';
+import 'package:portfolio/src/features/dashboard/projects_part.dart';
+import 'package:portfolio/src/widgets/not_responsive.dart';
+import 'package:portfolio/src/widgets/vertical_tabs.dart';
+import 'package:portfolio/src/widgets/cover_widget.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Dashboard extends StatefulWidget {

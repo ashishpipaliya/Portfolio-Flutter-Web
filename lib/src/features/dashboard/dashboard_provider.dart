@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:my_projects/src/models/fav_pub_model.dart';
+import 'package:portfolio/src/models/fav_pub_model.dart';
 
 class DashboardProvider extends ChangeNotifier {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;

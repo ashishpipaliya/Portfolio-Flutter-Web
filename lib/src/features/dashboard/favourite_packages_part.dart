@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_projects/src/features/dashboard/dashboard_provider.dart';
-import 'package:my_projects/src/models/fav_pub_model.dart';
+import 'package:portfolio/src/features/dashboard/dashboard_provider.dart';
+import 'package:portfolio/src/models/fav_pub_model.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -89,7 +89,7 @@ class _FavouritePackagesPartState extends State<FavouritePackagesPart> {
                   : Center(
                       child: SizedBox(
                         child: Text(
-                          "No Projects Yet",
+                          "No Data",
                           style: GoogleFonts.poppins(
                               fontSize: 30, fontWeight: FontWeight.w500),
                         ),

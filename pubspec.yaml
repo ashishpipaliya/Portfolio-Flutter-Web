@@ -1,4 +1,4 @@
-name: my_projects
+name: portfolio
 description: A new Flutter project.
 
 # Prevent accidental publishing to pub.dev.
@@ -16,6 +16,7 @@ dependencies:
   firebase_core: ^1.7.0
   flutter:
     sdk: flutter
+  flutter_html: ^2.1.5
   google_fonts: ^2.1.0
   photo_view: ^0.13.0
   provider: ^6.0.1

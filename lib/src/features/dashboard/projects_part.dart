@@ -3,9 +3,10 @@ import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_projects/src/features/dashboard/dashboard_provider.dart';
-import 'package:my_projects/src/widgets/image_widget.dart';
+import 'package:portfolio/src/features/dashboard/dashboard_provider.dart';
+import 'package:portfolio/src/widgets/image_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -266,7 +267,6 @@ class _ProjectsPartState extends State<ProjectsPart> {
                             return ImageWidget(
                               imageUrl: singleImage,
                               height: 500,
-                              width: 300,
                             );
                           },
                         ),
@@ -275,12 +275,10 @@ class _ProjectsPartState extends State<ProjectsPart> {
                     SizedBox(
                       height: 22,
                     ),
-                    Text(
-                      item['description'],
-                      style: GoogleFonts.lato(
-                          fontSize: 18, wordSpacing: 1.2, height: 1.5),
-                      textAlign: TextAlign.left,
+                    Html(
+                      data: item['description'],
                     ),
+                    SizedBox(height: 30),
                   ],
                 ),
               ),

@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutScreen extends StatefulWidget {
   const AboutScreen({Key? key}) : super(key: key);
@@ -19,13 +21,13 @@ class _AboutScreenState extends State<AboutScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CircleAvatar(
-              maxRadius: 100,
-              backgroundColor: Colors.transparent,
-              foregroundImage: NetworkImage(
-                  "https://placehold.jp/24/cccccc/000000/100x100.png?text=Profile.."),
-            ),
-            SizedBox(height: 20),
+            // CircleAvatar(
+            //   maxRadius: 100,
+            //   backgroundColor: Colors.transparent,
+            //   foregroundImage: NetworkImage(
+            //       "https://placehold.jp/24/cccccc/000000/100x100.png?text=Profile.."),
+            // ),
+            SizedBox(height: 50),
             RichText(
               text: TextSpan(children: [
                 TextSpan(
@@ -62,7 +64,8 @@ class _AboutScreenState extends State<AboutScreen> {
                         fontSize: 20)),
               ]),
             ),
-            SizedBox(height: 150),
+
+            SizedBox(height: 50),
             Text(
               "Skills".toUpperCase(),
               style:
@@ -74,7 +77,10 @@ class _AboutScreenState extends State<AboutScreen> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text("Framework"),
-                CustomChip(title: "Flutter"),
+                CustomChip(
+                  title: "Flutter",
+                  logoUrl: "https://img.icons8.com/color/452/flutter.png",
+                ),
               ],
             ),
 
@@ -85,9 +91,19 @@ class _AboutScreenState extends State<AboutScreen> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text("Languages"),
-                CustomChip(title: "Dart"),
-                CustomChip(title: "Java"),
-                CustomChip(title: "JavaScript"),
+                CustomChip(
+                  title: "Dart",
+                  logoUrl: "https://img.icons8.com/color/452/dart.png",
+                ),
+                CustomChip(
+                    title: "Java",
+                    logoUrl:
+                        "https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png"),
+                CustomChip(
+                  title: "JavaScript",
+                  logoUrl:
+                      "https://img.icons8.com/color/144/000000/javascript--v1.png",
+                ),
               ],
             ),
 
@@ -98,35 +114,134 @@ class _AboutScreenState extends State<AboutScreen> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text("Databases"),
-                CustomChip(title: "MongoDB"),
-                CustomChip(title: "Cloud Firestore"),
-                CustomChip(title: "Supabase"),
+                CustomChip(
+                  title: "MongoDB",
+                  logoUrl:
+                      "https://img.icons8.com/color/144/000000/mongodb.png",
+                ),
+                CustomChip(
+                  title: "Cloud Firestore",
+                  logoUrl:
+                      "https://img.icons8.com/color/144/000000/cloud-firestore.png",
+                ),
+                CustomChip(
+                  title: "Supabase",
+                  logoUrl: "https://pipedream.com/s.v0/app_1dBhP3/logo/96",
+                ),
               ],
-            )
+            ),
+            SizedBox(height: 30),
+            Wrap(
+              spacing: 10,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Text("Socials"),
+                IconButton(
+                    onPressed: () => _openSocials(
+                        url: "https://www.linkedin.com/in/ashish-pipaliya/"),
+                    icon: Image.network(
+                        "https://img.icons8.com/glyph-neue/452/linkedin.png")),
+                IconButton(
+                    onPressed: () => _openSocials(
+                        url: "https://twitter.com/ashish_pipaliya"),
+                    icon: Image.network(
+                        "https://img.icons8.com/ios-filled/452/twitter.png")),
+                IconButton(
+                    onPressed: () =>
+                        _openSocials(url: "https://github.com/ashishpipaliya"),
+                    icon: Image.network(
+                        "https://img.icons8.com/material-outlined/452/github.png"))
+              ],
+            ),
+            SizedBox(height: 50),
+            Text(
+              "Extras".toUpperCase(),
+              style:
+                  GoogleFonts.lato(fontSize: 20, fontWeight: FontWeight.w500),
+            ),
+            Text(
+                "• I play a lot with selenium using java. I automated Amazon.in for creating bulk account, place bulk orders and much more",
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black.withOpacity(0.4),
+                    fontSize: 20)),
+            SizedBox(height: 10),
+            RichText(
+                text: TextSpan(
+                    children: [
+                  TextSpan(
+                      text: "http://gvgb.herokuapp.com",
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () =>
+                            _openSocials(url: 'http://gvgb.herokuapp.com'),
+                      style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                          decoration: TextDecoration.underline,
+                          fontSize: 20))
+                ],
+                    text: "• Amazon Giftcard extractor from Email : ",
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black.withOpacity(0.4),
+                        fontSize: 20))),
+
+            SizedBox(height: 10),
+            RichText(
+                text: TextSpan(
+              text: "• Reverse Engineering enthusiastic : ",
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black.withOpacity(0.4),
+                  fontSize: 20),
+              children: [
+                TextSpan(
+                    text:
+                        "reversed Divyabhaskar and Dainikbhaskar mobile apps api",
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                        fontSize: 20))
+              ],
+            ))
           ],
         ),
       ),
     );
   }
+
+  void _openSocials({required String url}) async =>
+      await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
 }
 
 class CustomChip extends StatelessWidget {
   final String title;
-  const CustomChip({Key? key, required this.title}) : super(key: key);
+  final String logoUrl;
+  const CustomChip(
+      {Key? key,
+      required this.title,
+      this.logoUrl =
+          "https://play-lh.googleusercontent.com/CT1M2pKlUhGx4w5UHqarn6oSU_sa7L7XRW2-hQrfNi9oou6W81PbJnWi-9PbEfC_3g"})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      margin: EdgeInsets.only(right: 20),
       constraints: BoxConstraints(minWidth: 60),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          border: Border.all(color: Colors.black, width: 2)),
-      child: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w500, color: Colors.black),
+      decoration: BoxDecoration(),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.network(logoUrl, width: 30, height: 30, fit: BoxFit.fitWidth),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500, color: Colors.black),
+          ),
+        ],
       ),
     );
   }

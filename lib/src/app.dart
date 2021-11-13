@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_projects/src/features/dashboard/dashboard.dart';
-import 'package:my_projects/src/features/dashboard/dashboard_provider.dart';
-import 'package:my_projects/src/features/dashboard/homescreen_provider.dart';
+import 'package:portfolio/src/features/dashboard/dashboard.dart';
+import 'package:portfolio/src/features/dashboard/dashboard_provider.dart';
+import 'package:portfolio/src/features/dashboard/homescreen_provider.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
